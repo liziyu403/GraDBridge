@@ -1,30 +1,95 @@
 # GraDBridge on M3FD
 
-本仓库仅保留 GraDBridge/GNSB 在 M3FD RGB-IR 数据集上的训练与验证代码。
+Official implementation of **GraDBridge / GNSB** on the **M3FD RGB-IR multispectral object detection dataset**.
 
-## 目录
+This repository provides a **single-scale, single-fusion version of GraDBridge**, where the GNSB module is applied once for RGB-IR feature fusion. The code is intended to provide a compact and reproducible implementation for training and evaluation on M3FD.
 
-- `data/m3ddata.yaml`：M3FD 数据路径和类别定义（`data/` 中唯一的数据配置）
-- `configs/hyp.scratch.yaml`：训练超参数
-- `models/config/GNSBOperatorBiasing_SingleFusion.yaml`：唯一保留的单尺度 GNSB 融合模型配置
-- `models/component/GNSBOperatorBiasing.py`：GNSB 融合模块实现
-- `train.py`、`test.py`：训练入口与 epoch 级验证实现
+## Overview
 
-M3FD 数据配置需要提供 `train_rgb`、`val_rgb`、`train_ir`、`val_ir`、`nc` 和 `names`。数据集本身放在仓库外部，并在 `data/m3ddata.yaml` 中填写绝对路径。
+<p align="center">
+  <img src="Fig/overview.png" width="95%">
+</p>
 
-## 安装
+<p align="center">
+  <em>Overview of the GraDBridge framework.</em>
+</p>
+
+## GNSB Architecture
+
+<p align="center">
+  <img src="Fig/detail.png" width="95%">
+</p>
+
+<p align="center">
+  <em>Detailed architecture of the GNSB fusion module used in the single-scale, single-fusion setting.</em>
+</p>
+
+## Visualization
+
+<p align="center">
+  <img src="Fig/viz.png" width="95%">
+</p>
+
+<p align="center">
+  <em>Qualitative detection results on the M3FD dataset.</em>
+</p>
+
+## Repository Structure
+
+```text
+GraDBridge/
+├── configs/
+│   └── hyp.scratch.yaml
+├── data/
+│   └── m3ddata.yaml
+├── Fig/
+│   ├── detail.png
+│   ├── overview.png
+│   └── viz.png
+├── models/
+│   ├── component/
+│   │   └── GNSBOperatorBiasing.py
+│   └── config/
+│       └── GNSBOperatorBiasing_SingleFusion.yaml
+├── train.py
+├── test.py
+└── train_m3fd.sh
+```
+
+## Dataset
+
+The M3FD dataset is stored outside this repository. Please specify the absolute dataset paths in:
+
+```text
+data/m3ddata.yaml
+```
+
+The configuration should contain:
+
+```yaml
+train_rgb:
+val_rgb:
+train_ir:
+val_ir:
+nc:
+names:
+```
+
+## Installation
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 训练
+## Training
+
+Run:
 
 ```bash
 bash train_m3fd.sh
 ```
 
-等价的完整命令为：
+or use the full command:
 
 ```bash
 python train.py \
@@ -37,4 +102,4 @@ python train.py \
   --device 1
 ```
 
-如需从零训练，将 `--weights` 设为空字符串。训练过程会使用相同的 M3FD 数据配置在每个 epoch 后执行验证。W&B 默认可用，可通过 `--disable-wandb` 主动关闭。
+
