@@ -1,0 +1,14 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+# 忽略本地实验/日志目录
+-lzy-/
+wandb/
+wandb_local/
+result/
+
+*.out
+
+# Local training outputs and checkpoints
+runs/
+*.pt
+yolov5l.pt

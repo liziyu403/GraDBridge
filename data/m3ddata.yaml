@@ -1,0 +1,8 @@
+train_rgb: /data/datasets/Multimodal_Vision/M3FD/RGB/train/images
+val_rgb: /data/datasets/Multimodal_Vision/M3FD/RGB/val/images
+train_ir: /data/datasets/Multimodal_Vision/M3FD/IR/train/images
+val_ir: /data/datasets/Multimodal_Vision/M3FD/IR/val/images
+
+nc: 6
+
+names: ['Bus' , 'Car', 'Lamp', 'Motorcycle', 'People', 'Truck']
