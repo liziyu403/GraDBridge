@@ -1,6 +1,6 @@
 # GraDBridge on M3FD
 
-Official implementation of **GraDBridge / GNSB** on the **M3FD RGB-IR multispectral object detection dataset**.
+Official implementation of **GraDBridge** on the **M3FD RGB-IR multispectral object detection dataset**.
 
 This repository provides a **single-scale, single-fusion implementation of GraDBridge**, in which the GNSB module is applied once for RGB-IR feature fusion. It is intended as a compact and reproducible version for training and evaluating GraDBridge on M3FD.
 
@@ -11,7 +11,7 @@ This repository provides a **single-scale, single-fusion implementation of GraDB
 </p>
 
 <p align="center">
-  <em>Overview of the GraDBridge framework.</em>
+  Figure 1. Overview of the GraDBridge framework.
 </p>
 
 ## GNSB Architecture
@@ -21,7 +21,7 @@ This repository provides a **single-scale, single-fusion implementation of GraDB
 </p>
 
 <p align="center">
-  <em>Detailed architecture of the GNSB fusion module used in the single-scale, single-fusion configuration.</em>
+  Figure 2. Detailed architecture of the fusion module used in the single-scale, single-fusion configuration.</em>
 </p>
 
 ## Visualization
@@ -31,7 +31,7 @@ This repository provides a **single-scale, single-fusion implementation of GraDB
 </p>
 
 <p align="center">
-  <em>Qualitative detection results of GraDBridge on the M3FD dataset.</em>
+  Figure 3. Qualitative detection results of GraDBridge on the M3FD dataset.
 </p>
 
 ## Repository Structure
