@@ -7,7 +7,7 @@ This repository provides a **single-scale, single-fusion version of GraDBridge**
 ## Overview
 
 <p align="center">
-  <img src="Fig/overview.png" width="95%">
+  <img src="Fig/overview.png" width="50%">
 </p>
 
 <p align="center">
