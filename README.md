@@ -2,7 +2,7 @@
 
 Official implementation of **GraDBridge / GNSB** on the **M3FD RGB-IR multispectral object detection dataset**.
 
-This repository provides a **single-scale, single-fusion version of GraDBridge**, where the GNSB module is applied once for RGB-IR feature fusion. The code is intended to provide a compact and reproducible implementation for training and evaluation on M3FD.
+This repository provides a **single-scale, single-fusion implementation of GraDBridge**, in which the GNSB module is applied once for RGB-IR feature fusion. It is intended as a compact and reproducible version for training and evaluating GraDBridge on M3FD.
 
 ## Overview
 
@@ -21,7 +21,7 @@ This repository provides a **single-scale, single-fusion version of GraDBridge**
 </p>
 
 <p align="center">
-  <em>Detailed architecture of the GNSB fusion module used in the single-scale, single-fusion setting.</em>
+  <em>Detailed architecture of the GNSB fusion module used in the single-scale, single-fusion configuration.</em>
 </p>
 
 ## Visualization
@@ -31,7 +31,7 @@ This repository provides a **single-scale, single-fusion version of GraDBridge**
 </p>
 
 <p align="center">
-  <em>Qualitative detection results on the M3FD dataset.</em>
+  <em>Qualitative detection results of GraDBridge on the M3FD dataset.</em>
 </p>
 
 ## Repository Structure
@@ -42,10 +42,6 @@ GraDBridge/
 │   └── hyp.scratch.yaml
 ├── data/
 │   └── m3ddata.yaml
-├── Fig/
-│   ├── detail.png
-│   ├── overview.png
-│   └── viz.png
 ├── models/
 │   ├── component/
 │   │   └── GNSBOperatorBiasing.py
@@ -58,7 +54,7 @@ GraDBridge/
 
 ## Dataset
 
-The M3FD dataset is stored outside this repository. Please specify the absolute dataset paths in:
+Configure the M3FD dataset paths and class information in:
 
 ```text
 data/m3ddata.yaml
@@ -75,7 +71,11 @@ nc:
 names:
 ```
 
+The M3FD dataset itself is not included in this repository. Please specify the corresponding RGB and IR training/validation paths in `data/m3ddata.yaml`.
+
 ## Installation
+
+Install the required dependencies with:
 
 ```bash
 pip install -r requirements.txt
@@ -83,13 +83,13 @@ pip install -r requirements.txt
 
 ## Training
 
-Run:
+Training can be started directly with:
 
 ```bash
 bash train_m3fd.sh
 ```
 
-or use the full command:
+Alternatively, run the full command:
 
 ```bash
 python train.py \
@@ -101,5 +101,3 @@ python train.py \
   --epochs 200 \
   --device 1
 ```
-
-
